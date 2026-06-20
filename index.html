@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Laboratorio de Funciones Matemáticas</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [["\\(", "\\)"]], displayMath: [["\\[", "\\]"]] },
+      svg: { fontCache: "global" }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body>
+  <header class="hero">
+    <p class="eyebrow">Cálculo diferencial</p>
+    <h1>Laboratorio de Funciones Matemáticas</h1>
+    <p>
+      Web app didáctica para graficar funciones algebraicas, exponenciales,
+      logarítmicas y trigonométricas, analizando dominio, rango, simetría,
+      transformaciones y operaciones entre funciones.
+    </p>
+  </header>
+
+  <main class="layout">
+    <aside class="card panel">
+      <h2>Configurar gráfica</h2>
+
+      <label>
+        Familia de función
+        <select id="functionSelect"></select>
+      </label>
+
+      <div class="input-grid">
+        <label>
+          A
+          <input id="paramA" type="number" step="0.1" value="1" />
+        </label>
+
+        <label>
+          h
+          <input id="paramH" type="number" step="0.1" value="0" />
+        </label>
+
+        <label>
+          k
+          <input id="paramK" type="number" step="0.1" value="0" />
+        </label>
+
+        <label>
+          n / base
+          <input id="paramN" type="number" step="0.1" value="2" />
+        </label>
+      </div>
+
+      <button id="drawBtn" type="button">Graficar</button>
+      <button id="downloadBtn" type="button" class="secondary">Guardar PNG</button>
+
+      <section class="info-box">
+        <h3>Fórmula actual</h3>
+        <div id="formulaBox" class="math-box"></div>
+      </section>
+
+      <section class="info-box">
+        <h3>Análisis</h3>
+        <ul id="analysisList"></ul>
+      </section>
+
+      <section class="info-box">
+        <h3>Interpretación</h3>
+        <p id="interpretation"></p>
+      </section>
+    </aside>
+
+    <section class="card graph-card">
+      <canvas id="graphCanvas" width="980" height="640" aria-label="Plano cartesiano"></canvas>
+    </section>
+
+    <section class="card table-card">
+      <div class="table-header">
+        <div>
+          <p class="section-label">Tabla de valores</p>
+          <h2 id="tableTitle">Valores calculados</h2>
+        </div>
+        <button id="copyTableBtn" type="button" class="secondary">Copiar tabla</button>
+      </div>
+
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>x</th>
+              <th>y</th>
+            </tr>
+          </thead>
+          <tbody id="valuesTable"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Proyecto de portafolio desarrollado con HTML, CSS, JavaScript, Canvas y MathJax.</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
